@@ -27,17 +27,12 @@ export default function Home() {
             minutes. Enhance customer engagement and automate support.
           </p>
 
-          <Link href="/register" passHref>
-            <Button
-              as={"a"}
-              color="primary"
-              variant="solid"
-              radius="full"
-              size="lg"
-              className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105"
-            >
-              Get Started
-            </Button>
+          <Link
+            href="/register"
+            passHref
+            className=" rounded-full text-white px-8 py-5 text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-800/50"
+          >
+            Get Started
           </Link>
         </div>
       </div>
