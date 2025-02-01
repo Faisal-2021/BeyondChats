@@ -27,18 +27,16 @@ export default function Home() {
             minutes. Enhance customer engagement and automate support.
           </p>
 
-          <Link href="/register">
-            <Button
-              color="primary"
-              variant="solid"
-              radius="full"
-              size="lg"
-              // onPress={() => router}
-              className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105"
-            >
-              Get Started
-            </Button>
-          </Link>
+          <Button
+            color="primary"
+            variant="solid"
+            radius="full"
+            size="lg"
+            className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105"
+          >
+            <Link href="/register"></Link>
+            Get Started
+          </Button>
         </div>
       </div>
     </div>
