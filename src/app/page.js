@@ -34,8 +34,7 @@ export default function Home() {
             size="lg"
             className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105"
           >
-            <Link href="/register"></Link>
-            Get Started
+            <Link href="/register">Get Started</Link>
           </Button>
         </div>
       </div>
