@@ -7,7 +7,7 @@ export default function Home() {
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Hero Image */}
+          {/* Bot Image */}
           <div className="relative w-48 h-48 mx-auto mb-8">
             <Image
               alt="Chatbot Illustration"
@@ -27,31 +27,18 @@ export default function Home() {
             minutes. Enhance customer engagement and automate support.
           </p>
 
-          {/* Call-to-Action Buttons */}
-          <div className="flex justify-center gap-6">
-            <Link href="/register">
-              <Button
-                color="primary"
-                variant="solid"
-                radius="full"
-                size="lg"
-                className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105"
-              >
-                Get Started
-              </Button>
-            </Link>
-            <Link href="#">
-              <Button
-                color="secondary"
-                variant="ghost"
-                radius="full"
-                size="lg"
-                className="px-8 py-6 text-lg font-semibold border-2 border-muted-foreground/20 hover:border-muted-foreground/40 transition-all transform hover:scale-105"
-              >
-                Learn More
-              </Button>
-            </Link>
-          </div>
+          <Link href="/register">
+            <Button
+              color="primary"
+              variant="solid"
+              radius="full"
+              size="lg"
+              // onPress={() => router}
+              className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105"
+            >
+              Get Started
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
