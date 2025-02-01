@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button, Card, Progress } from "@heroui/react";
 import { motion } from "framer-motion";
@@ -12,7 +12,17 @@ const ChatbotIntegration = () => {
   const [isTesting, setIsTesting] = useState(false);
   const searchParam = useSearchParams();
   const companyWebsite = searchParam.get("companyWebsite");
-  const companyWebsiteUrl = JSON.parse(decodeURIComponent(companyWebsite));
+
+  // Safely parse the companyWebsite URL
+  let companyWebsiteUrl = "";
+  try {
+    companyWebsiteUrl = JSON.parse(decodeURIComponent(companyWebsite || ""));
+  } catch (error) {
+    console.error("Failed to parse companyWebsite:", error);
+    toast.error("Invalid URL provided. Redirecting to error page...");
+    router.push("/error");
+    return null; // Stop rendering the component
+  }
 
   const isValidUrl = (url) => {
     try {
@@ -30,7 +40,6 @@ const ChatbotIntegration = () => {
     }
   }, [companyWebsiteUrl, router]);
 
-  
   const handleTestIntegration = async () => {
     setIsTesting(true);
     const toastId = toast.loading("Testing integration...");
@@ -47,9 +56,8 @@ const ChatbotIntegration = () => {
       }
       setIsTesting(false);
     }, 3000);
-  }
+  };
 
- 
   const handleTestChatbot = () => {
     const newWindow = window.open(companyWebsiteUrl, "_blank");
     if (!newWindow) {
@@ -84,7 +92,7 @@ const ChatbotIntegration = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 to-purple-50">
-        <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -135,7 +143,7 @@ const ChatbotIntegration = () => {
                 Integrate on Your Website
               </h3>
               <div className="grid gap-4 md:grid-cols-2">
-              <Button
+                <Button
                   onPress={() => {
                     navigator.clipboard.writeText(
                       '<script src="https://dummy-chatbot-integration.com/script.js"></script>'
@@ -177,4 +185,10 @@ const ChatbotIntegration = () => {
   );
 };
 
-export default ChatbotIntegration;
+const ChatbotIntegrationWithSuspense = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <ChatbotIntegration />
+  </Suspense>
+);
+
+export default ChatbotIntegrationWithSuspense;
